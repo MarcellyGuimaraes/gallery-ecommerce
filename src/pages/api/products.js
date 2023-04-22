@@ -7,6 +7,9 @@ export default function handler(req, res) {
     const { products } = JSON.parse(fileData)
     res.status(200).json({ products })
   } else if (req.method === 'POST') {
+    const fileData = fs.readFileSync('data.json')
+    const { products } = JSON.parse(fileData)
+
     const newProductList = [...products, req.body]
     fs.writeFileSync('data.json', JSON.stringify({ products: newProductList }))
     res.status(201).json({ message: 'Produto adicionado com sucesso!' })
@@ -14,5 +17,3 @@ export default function handler(req, res) {
     res.status(404).json({ message: 'Recurso não encontrado.' })
   }
 }
-
-addTestProducts()
