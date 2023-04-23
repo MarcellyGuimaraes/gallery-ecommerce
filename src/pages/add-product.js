@@ -26,44 +26,9 @@ export default function AddProduct() {
 
   console.log('Product data: ', productData)
 
-  // const handleSave = async () => {
-  //   try {
-  //     const response = await axios.post('/api/products', productData)
-  //     if (response.status === 201) {
-  //       addProduct(productData) // adicionando o novo produto ao contexto
-  //       setProductData({
-  //         image: '',
-  //         title: '',
-  //         description: '',
-  //         price: '',
-  //         active: true,
-  //         whatsappLink: '',
-  //       })
-  //     } else {
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
-  const handleSave = async (event) => {
-    event.preventDefault()
+  const handleSave = async () => {
     try {
-      const formData = new FormData()
-      formData.append('image', productData.image)
-      formData.append('title', productData.title)
-      formData.append('description', productData.description)
-      formData.append('price', productData.price)
-      formData.append('active', productData.active)
-      formData.append('whatsappLink', productData.whatsappLink)
-      formData.append('createdAt', productData.createdAt)
-
-      const response = await axios.post('/api/products', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-
+      const response = await axios.post('/api/products', productData)
       if (response.status === 201) {
         addProduct(productData) // adicionando o novo produto ao contexto
         setProductData({
@@ -165,23 +130,10 @@ export default function AddProduct() {
           Imagem
         </label>
         <input
-          type="file"
-          name="image"
-          accept="image/*"
-          onChange={(e) => {
-            const file = e.target.files[0]
-            setProductData((prevState) => ({
-              ...prevState,
-              image: file,
-            }))
-          }}
-          className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-        />
-        {/* <input
           type="text"
           name="image"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        /> */}
+        />
       </div>
 
       <button
