@@ -71,6 +71,14 @@
       "price": 50,
       "active": true,
       "whatsappLink": "https://api.whatsapp.com/send?phone=5575991674108"
+    },
+    {
+      "image": "/images/_ (1).jpeg",
+      "title": "TTTTTTTTTT",
+      "description": "DDDDDDDDDDD",
+      "price": 1000,
+      "active": true,
+      "whatsappLink": "https://github.com/MarcellyGuimaraes/gallery-ecommerce/"
     }
   ]
 }
