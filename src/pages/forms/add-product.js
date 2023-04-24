@@ -51,7 +51,7 @@ export default function AddProduct() {
       if (response.status === 200) {
         const data = await response.json()
         console.log('Upload successful!', data)
-        router.push('/')
+        // router.push('/')
       } else {
         console.log('Upload failed!')
       }
