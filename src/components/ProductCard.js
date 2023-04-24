@@ -24,9 +24,9 @@ export default function ProductCard({
         <p className="text-md font-bold text-gray-800 block">{description}</p>
         <div className="flex items-center">
           <p className="text-lg font-semibold text-black cursor-auto my-3">
-            R$ {price}
+            R$ {price.toFixed(2).toString().replace('.', ',')}
           </p>
-          <a href={whatsapp} className="ml-auto">
+          <a href={whatsapp} target="_blank" className="ml-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
