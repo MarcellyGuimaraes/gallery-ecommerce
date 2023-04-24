@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 export default function AddProduct() {
@@ -12,6 +13,7 @@ export default function AddProduct() {
   })
 
   const [imageFile, setImageFile] = useState(null)
+  const [router] = useState(useRouter())
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -49,6 +51,7 @@ export default function AddProduct() {
       if (response.status === 200) {
         const data = await response.json()
         console.log('Upload successful!', data)
+        router.push('/')
       } else {
         console.log('Upload failed!')
       }
