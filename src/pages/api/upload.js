@@ -20,6 +20,13 @@ async function saveData(data) {
     }
 
     const imagePath = data.image.replace(/^\.\/public/, '')
+    const imageDir = path.join(process.cwd(), 'public', 'images')
+
+    // Verifica se o diretório de imagens existe
+    if (!fs.existsSync(imageDir)) {
+      await fs.mkdir(imageDir, { recursive: true })
+      console.log('Diretório de imagens criado com sucesso.')
+    }
 
     const product = {
       ...data,
@@ -32,9 +39,9 @@ async function saveData(data) {
 
     await fs.writeFile(filePath, JSON.stringify(jsonData))
 
-    console.log('Data saved to file successfully.')
+    console.log('Dados salvos no arquivo com sucesso.')
   } catch (error) {
-    console.error('Error saving data to file:', error)
+    console.error('Erro ao salvar os dados no arquivo:', error)
   }
 }
 
